@@ -1,0 +1,94 @@
+//1. Bit Operations:
+https://1.bp.blogspot.com/-Tfj_D_f_AF0/VZO5QIIGAUI/AAAAAAAAAmI/5Rw6uIU3EiI/s1600/DS1307%2BTime%2BKeeper%2BRegister.PNG
+
+DS1307 has its time registers in BCD format as shown in the image found in the above link, so 
+a. Write a function to Set, clear and toggle bit of an 8-bit number
+
+Concepts to be used.
+- Operators
+
+#include <stdio.h>
+
+unsigned char setBit(unsigned char num, int bitPos) {
+    unsigned char mask = 1 << bitPos;
+    return num | mask;
+}
+
+unsigned char clearBit(unsigned char num, int bitPos) {
+    unsigned char mask = ~(1 << bitPos);
+    return num & mask;
+}
+
+unsigned char toggleBit(unsigned char num, int bitPos) {
+    unsigned char mask = 1 << bitPos;
+    return num ^ mask;
+}
+
+int main() {
+    unsigned char num;
+    int bitPos;
+    int choice;
+
+    printf("Enter an 8-bit number: ");
+    scanf("%hhu", &num);
+
+    printf("Choose an operation:\n");
+    printf("1. Set a bit\n");
+    printf("2. Clear a bit\n");
+    printf("3. Toggle a bit\n");
+    printf("Enter your choice: ");
+    scanf("%d", &choice);
+
+    printf("Enter the bit position (0-7): ");
+    scanf("%d", &bitPos);
+
+    switch (choice) {
+        case 1:
+            num = setBit(num, bitPos);
+            printf("Bit set operation result: %hhu\n", num);
+            break;
+        case 2:
+            num = clearBit(num, bitPos);
+            printf("Bit clear operation result: %hhu\n", num);
+            break;
+        case 3:
+            num = toggleBit(num, bitPos);
+            printf("Bit toggle operation result: %hhu\n", num);
+            break;
+        default:
+            printf("Invalid choice.\n");
+            break;
+    }
+
+    return 0;
+}
+
+2. BCD to Decimal:
+https://1.bp.blogspot.com/-Tfj_D_f_AF0/VZO5QIIGAUI/AAAAAAAAAmI/5Rw6uIU3EiI/s1600/DS1307%2BTime%2BKeeper%2BRegister.PNG
+
+DS1307 has its time registers in BCD format as shown in the image found in the above link, To set the time we need to convert the decimal number to BCD format, hence, write a fucntion to convert decimal to BCD
+
+Concepts to be used.
+- Operators
+- Preprocessor
+
+#include <stdio.h>
+
+#define DECIMAL_TO_BCD(decimal) ((decimal / 10) << 4) | (decimal % 10)
+
+unsigned char decimalToBCD(unsigned char decimal) {
+    return ((decimal / 10) << 4) | (decimal % 10);
+}
+
+int main() {
+    unsigned char decimal;
+
+    printf("Enter a decimal number (0-99): ");
+    scanf("%hhu", &decimal);
+
+    unsigned char bcd = decimalToBCD(decimal);
+
+    printf("BCD representation: 0x%02X\n", bcd);
+
+    return 0;
+}
