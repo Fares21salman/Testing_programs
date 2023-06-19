@@ -1,0 +1,224 @@
+//1. Write a function to return the greatest of 3 number using if else if.
+
+#include <stdio.h>
+
+int findGreatest(int num1, int num2, int num3) {
+    int greatest = num1; // Assume the first number is the greatest
+    
+    if (num2 > greatest) {
+        greatest = num2;
+    }
+    
+    if (num3 > greatest) {
+        greatest = num3;
+    }
+    
+    return greatest;
+}
+
+int main() {
+    int num1, num2, num3, greatest;
+    
+    printf("Enter three numbers: ");
+    scanf("%d %d %d", &num1, &num2, &num3);
+    
+    greatest = findGreatest(num1, num2, num3);
+    
+    printf("The greatest number is: %d\n", greatest);
+    
+    return 0;
+}
+
+//2. Write a function to return the grade of the given student using switch case statements
+90 to 100 -> 'A'
+75 to 89 -> 'B'
+60 to 74 -> 'C'
+50 to 59 -> 'D'
+36 to 49 -> 'E'
+0 to 35 -> 'F'
+
+In main check the return value and print the below
+65 -> "Grade A"
+66 -> "Grade B"
+67 -> "Grade C"
+68 -> "Grade D"
+69 -> "Grade E"
+70 -> "Grade F
+
+#include <stdio.h>
+
+char calculateGrade(int marks) {
+    char grade;
+    
+    switch (marks) {
+        case 90 ... 100:
+            grade = 'A';
+            break;
+        case 75 ... 89:
+            grade = 'B';
+            break;
+        case 60 ... 74:
+            grade = 'C';
+            break;
+        case 50 ... 59:
+            grade = 'D';
+            break;
+        case 36 ... 49:
+            grade = 'E';
+            break;
+        case 0 ... 35:
+            grade = 'F';
+            break;
+        default:
+            grade = 'X'; // Invalid grade
+            break;
+    }
+    
+    return grade;
+}
+
+int main() {
+    int marks;
+    char grade;
+    
+    printf("Enter marks: ");
+    scanf("%d", &marks);
+    
+    grade = calculateGrade(marks);
+    
+    switch (grade) {
+        case 'A':
+            printf("Grade A\n");
+            break;
+        case 'B':
+            printf("Grade B\n");
+            break;
+        case 'C':
+            printf("Grade C\n");
+            break;
+        case 'D':
+            printf("Grade D\n");
+            break;
+        case 'E':
+            printf("Grade E\n");
+            break;
+        case 'F':
+            printf("Grade F\n");
+            break;
+        default:
+            printf("Invalid marks\n");
+            break;
+    }
+    
+    return 0;
+}
+
+//3. Write a function to find if a give character is vowel using switch case statements, 
+    - If vowel, return 1
+    - If not vowel, return 0;
+
+In main print,
+"Vowel" if return value is 1
+"Not Vowel" if return value is 1
+
+#include <stdio.h>
+
+int isVowel(char ch) {
+    int result;
+    
+    switch (ch) {
+        case 'a':
+        case 'e':
+        case 'i':
+        case 'o':
+        case 'u':
+        case 'A':
+        case 'E':
+        case 'I':
+        case 'O':
+        case 'U':
+            result = 1; // Vowel
+            break;
+        default:
+            result = 0; // Not a vowel
+            break;
+    }
+    
+    return result;
+}
+
+int main() {
+    char ch;
+    int isVowelResult;
+    
+    printf("Enter a character: ");
+    scanf("%c", &ch);
+    
+    isVowelResult = isVowel(ch);
+    
+    if (isVowelResult) {
+        printf("Vowel\n");
+    } else {
+        printf("Not Vowel\n");
+    }
+    
+    return 0;
+}
+
+//4. Write a function to find the type of the character passed
+    - 'A' to 'Z', return 1
+    - 'a; to 'z', return 2
+    - '0' to '9', return 3
+    - Any Other printable symbols, return 4
+    - Non printable symbols, return 5 
+    
+#include <stdio.h>
+#include <ctype.h>
+
+int characterType(char ch) {
+    if (isalpha(ch)) {
+        if (isupper(ch)) {
+            return 1; // Uppercase letter
+        } else {
+            return 2; // Lowercase letter
+        }
+    } else if (isdigit(ch)) {
+        return 3; // Digit
+    } else if (isprint(ch)) {
+        return 4; // Printable symbol
+    } else {
+        return 5; // Non-printable symbol
+    }
+}
+
+int main() {
+    char ch;
+    
+    printf("Enter a character: ");
+    scanf("%c", &ch);
+    
+    int type = characterType(ch);
+    
+    switch (type) {
+        case 1:
+            printf("Type: Uppercase letter\n");
+            break;
+        case 2:
+            printf("Type: Lowercase letter\n");
+            break;
+        case 3:
+            printf("Type: Digit\n");
+            break;
+        case 4:
+            printf("Type: Printable symbol\n");
+            break;
+        case 5:
+            printf("Type: Non-printable symbol\n");
+            break;
+        default:
+            printf("Invalid character\n");
+            break;
+    }
+    
+    return 0;
+}
