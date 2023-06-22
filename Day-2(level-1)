@@ -28,7 +28,9 @@ void printExponent(double num) {
 }
 
 int main() {
-    double x = 0.7;
+    double x;
+    printf("Enter a double value: ");
+    scanf("%lf", &x);
 
     printExponent(x);
 
